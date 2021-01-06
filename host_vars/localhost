@@ -1,0 +1,192 @@
+---
+branch: master
+
+ansible_cron_minute: "*/5"
+ssh_port: 22
+ssh_users: "wiu mansible"
+
+# platform-specific
+ansible_python_interpreter: /usr/bin/python3
+microcode_amd_install: false
+microcode_intel_install: true
+
+# app defaults
+gui_editor: code
+terminal_emulator: terminator
+web_browser: org.mozilla.firefox
+
+# application selection
+# Basic required apps
+autofs: true #(Auto-mounting filesystem)
+apt-transport-https: true
+ca-certificates: true
+
+# system related
+gdebi: true #(Package Installer)
+# neofetch: true #(Free and open-source cross-platform command-line system information tool - Information gathering and displaying)
+
+
+# ref: https://www.fossmint.com/best-ubuntu-apps/
+#      https://itsfoss.com/best-ubuntu-apps/
+
+# system monitoring / task manager
+# conky-manager: true #(Conky - Customization Tool)     - needed role
+firewalld : true
+# htop : true
+glances: true
+# stacer: true #(System Optimizer)
+
+# Terminal emulators
+# tilix: true #(Terminal Emulator)
+terminator: true #(Terminal Emulator)
+# tmux : true
+
+# ssh
+mosh : true #(Alternative to ssh, stable and reliable)
+openssh-client: true
+# openssh-server : true
+fail2ban : true
+
+# # Code editors
+code: true #(Visual Studio Code)
+# vim : true
+
+# # Version control
+git: true
+GitBook Editor: true #(GitBook Workflow)
+
+# # Screen capturing/recording
+# peek: true #(Screen Recording)
+# simple-screen-recorder: true #(Screen Recording)
+
+# # Web browsers
+# chromium: true
+firefox: true
+vivaldi: true #(Feature-packed)
+
+
+# # Media editing (Image/audio/video editing and 3D-animation)
+
+# # Image editing
+# gimp: true #(Image Editor)
+# inkscape: true #(free and open source image editor specifically focusing on vector graphics)
+# digikam: true #(professional open-source photo editing and management software)
+# xnconvert: true #(batch image conversion tool - bulk resize images, convert the file type and rename them)
+# darktable: true #(open source photography workflow application and raw developer. A virtual lighttable and darkroom for photographers)
+# glimpse: true #(open source image editor)
+
+# # Audio editing
+# audacity: true #(audio editor than an audio player)
+
+# # Video editing
+# Kdenlive: true #(Video Editor)
+# shotcut: true #(Video Editing)
+# handBrake: true #(open source tool for converting videos from a no of formats to a few modern, popular formats)
+
+# # 3D animation
+# blender: true #(free and open-source 3D creation suite)
+
+
+# # Virtualization:
+
+# # Vagrant
+# vagrant: true # (Ref: https://www.osradar.com/install-vagrant-in-ubuntu-18-mint-19/)
+
+# # Vitrualbox
+# virtualbox: true # (install virtualbox without adding new PPA repos of adding new sources to source.lis file)
+# virtualbox-qt: true # (GUI  interface to manage the guests do)
+
+# # kvm (libvirt) :
+# qemu-kvm: true
+# libvirt0: true
+# libvirt-bin: true
+# virt-manager: true
+# libguestfs-tools: true
+
+# # DevOps Tools:
+
+# # container service
+docker: true
+
+# # IaaC (Infrastructre as a Code)
+# packer: true #(HashiCorp Packer automates the creation of any type of machine image)
+# terraform: true #(open-source infrastructure as code software tool created by HashiCorp)
+
+# # Data Syncing
+# syncthing: true #(peer-to-peer file synchronization)
+
+
+# # Online messaging and meeting apps
+# telegram-desktop: true #(Telegram Desktop client)
+# rambox: true #(all-in-one hub for communication and productivity app {messaging and emailing})
+# Skype: true #(VoIP)
+# signal: true #(Signal is a cross-platform encrypted messaging service)
+
+# # Office apps
+# foliate: true #(free e-book reading application)
+# libreoffice: true
+# onlyOffice: true #(free, open source set of productivity apps)
+
+# # Email clients
+# geary: true #(Email Client)
+# nylas: true #(Email Client)
+# thunderbird: true #(Email Client)
+
+# # Note taking apps
+# Whatever: true #(Evernote Alternative)
+
+# # Password Manager
+# keepassxc: true #(Cross Platform Password Manager. KeePassXC is a free/open-source password manager or safe which helps you to manage your passwords in a secure way)
+
+# # Gaming platform
+# lutris: true #(Open Source gaming platform for Linux)
+# steam: true #(video game digital distribution service)
+
+# # Extra apps
+# mint-meta-codecs: true # Multimedia Support: third-party software for graphics and Wi-Fi hardware, Flash, MP3, and other media
+# mono-runtime-common: true # implementation of the Windows .NET framework
+# gnome-orca: true # accessibility feature which can be discarded unless you are visually challenged
+# PlayOnLinux: true #(gaming application also install windows apps)
+# mattermost: true #(Mattermost is a high trust, open source collaboration platform built for developers)
+# ulauncher: true #(Application Launcher)
+# vlc: true #(Free and open-source, portable, cross-platform media player software, and streaming media server developed by the VideoLAN project)
+
+# # desktop environment selection
+# gnome: true
+# mate: false
+kde-plasma-desktop: true
+# kde-standard: false
+# kde-full: false
+
+
+# authy: true
+# autofs: true
+# chromium: true
+# darktable: true
+# firefox: true
+# foliate: true
+# games: true?????
+# glimpse: true
+# keepassxc: true
+# libreoffice: true
+# lutris: true
+# mattermost: true
+# minecraft: true
+# packer: true
+# signal: true
+# spotify: true
+# steam: true
+# syncthing: true
+# terraform: true
+# thunderbird: true
+# todoist: true
+# ulauncher: false
+# vagrant: true
+# virtualbox: true
+# vivaldi: true
+# vlc: true
+# xonotic: true
+
+# desktop environment selection
+# gnome: true
+# mate: false
