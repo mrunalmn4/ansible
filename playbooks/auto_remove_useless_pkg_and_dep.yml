@@ -1,0 +1,47 @@
+# Ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html
+#         https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+#         https://docs.ansible.com/ansible/latest/collections/community/general/pacman_module.html
+
+
+---
+#  ***** ***** Distro: Debian and Module: apt ***** *****
+
+# run the equivalent of "apt-get autoremove"
+- name: post-run | remove dependencies that are no longer required (debian based distros)
+  tags: always
+  apt:
+    autoremove: yes
+  changed_when: False
+  # when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu", "Kali GNU/Linux"]
+  when: ansible_os_family == "Debian"
+
+# run the equivalent of "apt-get autoclean"
+- name: post-run | remove useless packages from the cache (debian based distros)
+  tags: always
+  apt:
+    autoclean: yes
+  changed_when: False
+  # when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu", "Kali GNU/Linux"]
+  when: ansible_os_family == "Debian"
+
+
+#  ***** ***** Distro: RedHat and Module: yum ***** *****
+
+- name: post-run | update package cache (RedHat based distros)
+  tags: always
+  yum:
+    autoremove: yes
+  changed_when: False
+  # when: ansible_distribution in ["RedHat", "centos", "fedora"]
+  when: ansible_os_family == "RedHat"
+
+
+# #  ***** ***** Distro: Archlinux and Module: pacman ***** *****
+
+# - name: post-run | update package cache (arch)
+#   tags: always
+#   pacman:
+#     autoremove: yes
+#   changed_when: False
+#   # when: ansible_distribution == "Archlinux"
+#   when: ansible_os_family == "Archlinux"

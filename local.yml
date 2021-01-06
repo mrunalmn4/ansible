@@ -1,0 +1,37 @@
+# master ansible playbook
+
+
+---
+# master ansible play
+- hosts: all
+  tags: always
+  become: true
+
+
+  # tasks to complete before running roles
+  pre_tasks:
+    - name: system | info | display system details
+      include_tasks: playbooks/display_system_details.yml
+      tags: always
+
+    - name: system | packages | update package cache
+      include_tasks: playbooks/update_package_cache.yml
+      tags: always
+
+    - name: system | packages | upgrade system packages
+      include_tasks: playbooks/upgrade_system_packages.yml
+      tags: always
+
+
+  # tasks:
+
+
+  # tasks to complete before running roles
+  post_tasks:
+    - name: system | packages | auto remove useless packages and dependencies
+      include_tasks: playbooks/auto_remove_useless_pkg_and_dep.yml
+      tags: always
+
+    - name: system | packages | check and reboot if needed
+      include_tasks: playbooks/auto_remove_useless_pkg_and_dep.yml
+      tags: always
