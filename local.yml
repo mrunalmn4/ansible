@@ -33,5 +33,5 @@
       tags: always
 
     - name: system | packages | check and reboot if needed
-      include_tasks: playbooks/auto_remove_useless_pkg_and_dep.yml
+      include_tasks: playbooks/check_reboot_needed.yml
       tags: always
