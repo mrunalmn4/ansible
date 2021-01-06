@@ -7,18 +7,18 @@
 #  ***** ***** Distro: Debian and Module: apt ***** *****
 
 # run the equivalent of "apt-get upgrade"
-- name: pre-run | upgrade package cache (debian based distros)
+- name: pre-run | upgrade package (debian based distros)
   tags: always
   apt:
-    upgrade_cache: yes
-    name: "*"
+    upgrade: yes
+    # name: "*"
     state: latest
   changed_when: False
   # when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu", "Kali GNU/Linux"]
   when: ansible_os_family == "Debian"
 
 # run the equivalent of "apt-get dist-upgrade"
-- name: pre-run | upgrade package cache (debian based distros)
+- name: pre-run | upgrade package (debian based distros)
   tags: always
   apt:
     upgrade: dist
@@ -29,10 +29,10 @@
 
 #  ***** ***** Distro: RedHat and Module: yum ***** *****
 
-- name: pre-run | upgrade package cache (RedHat based distros)
+- name: pre-run | upgrade package (RedHat based distros)
   tags: always
   yum:
-    upgrade_cache: yes
+    upgrade: yes
     name: "*"
     state: latest
     # exclude: kernel*,foo*           # excluding kernel & foo related packages
@@ -43,10 +43,10 @@
 
 #  ***** ***** Distro: Archlinux and Module: pacman ***** *****
 
-- name: pre-run | upgrade package cache (arch)
+- name: pre-run | upgrade package (arch)
   tags: always
   pacman:
-    upgrade_cache: yes
+    upgrade: yes
     name: "*"
     state: latest
   changed_when: False
