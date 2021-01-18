@@ -1,0 +1,21 @@
+---
+# vars file for manage_docker
+
+# variables related to docker image
+repo_path: "/docker/repo/"
+
+# variables related to docker image
+image_tmp_path: "/docker/tmp/"
+image_final_path: "/docker/images/"
+image_name:
+  - debian
+  - ubuntu
+  - centos
+
+# variables related to docker container
+container_tmp_path: "/docker/tmp/"
+container_final_path: "/docker/containers/"
+container_name:
+  - debian
+  - ubuntu
+  - centos

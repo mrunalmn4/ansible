@@ -1,0 +1,32 @@
+# master ansible playbook
+
+
+---
+# master ansible play
+- hosts: all
+  tags: always
+  become: true
+  tasks:
+  - name: set fact | action
+    set_fact:
+      action: started #present/absent/reloaded/restarted/started/stopped/killed # required. The C(set_fact) module takes key=value pairs as variables to set in the playbook scope. Or alternatively, accepts complex arguments using the C(args:) statement.
+      cacheable: no # not required. This boolean indicates if the facts set will also be added to the fact cache, if fact caching is enabled.
+
+  # master ansible play
+  - name: include a play to create docker
+    include_tasks: "{{ playbook_dir }}/../playbooks/manage_dockers.yml"
+    # import_playbook: "{{ playbook_dir }}/../playbooks/manage_dockers.yml"
+
+
+
+
+
+  - name: set fact | action
+    set_fact:
+      action: absent #present/absent/reloaded/restarted/started/stopped/killed # required. The C(set_fact) module takes key=value pairs as variables to set in the playbook scope. Or alternatively, accepts complex arguments using the C(args:) statement.
+      cacheable: no # not required. This boolean indicates if the facts set will also be added to the fact cache, if fact caching is enabled.
+
+  # master ansible play
+  - name: include a play to create docker
+    include_tasks: "{{ playbook_dir }}/../playbooks/manage_dockers.yml"
+    # import_playbook: "{{ playbook_dir }}/../playbooks/manage_dockers.yml"
