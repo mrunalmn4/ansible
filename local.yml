@@ -10,6 +10,16 @@
 
   # tasks to complete before running roles
   pre_tasks:
+
+    - name: pre-run | include vars related to all categories
+      include_vars:
+        dir: /home/wiu/ms/ansible/ansible/group_vars
+        extensions:
+          - ''
+          - 'yaml'
+          - 'yml'
+          - 'json'
+
     - name: system | info | display system details
       include_tasks: playbooks/display_system_details.yml
       tags: always
@@ -23,7 +33,21 @@
       tags: always
 
 
-  # tasks:
+  tasks:
+    - name: system | packages | install packages and dependencies
+      include_tasks: playbooks/manage_os_packages.yml
+      tags: install, packages
+      loop: "{{
+        ( ansible_run_tags | intersect(package_list.keys()| list) | list )
+        if  ( ansible_run_tags | intersect(package_list.keys()| list) | list ) != []
+        else (package_list.keys()| list) }}"
+      loop_control:
+        loop_var: curr_pkg_categories
+
+
+    - name: system | packages | install python(pip) packages and dependencies
+      include_tasks: playbooks/manage_pip_packages.yml
+      tags: install, packages
 
 
   # tasks to complete before running roles
