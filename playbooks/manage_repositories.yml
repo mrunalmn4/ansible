@@ -1,0 +1,53 @@
+# Ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html
+#         https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+#         https://docs.ansible.com/ansible/latest/collections/community/general/pacman_module.html
+
+
+---
+
+#  ***** ***** Distro: Debian and Module: apt ***** *****
+
+- name: system setup | repositories | add sources.list for debian hosts
+  tags: non-free,repositories
+  blockinfile:
+    path: /etc/apt/sources.list
+    block: |
+      deb http://deb.debian.org/debian stable main contrib non-free
+      deb-src http://deb.debian.org/debian stable main contrib non-free
+
+      deb http://deb.debian.org/debian-security/ stable/updates main contrib non-free
+      deb-src http://deb.debian.org/debian-security/ stable/updates main contrib non-free
+
+      deb http://deb.debian.org/debian stable-updates main contrib non-free
+      deb-src http://deb.debian.org/debian stable-updates main contrib non-free
+    backup: yes
+  notify: apt_update
+  when: ansible_distribution == "Debian"
+
+- name: system setup | repositories | add debian-backports
+  tags: backports,repositories
+  apt_repository:
+    repo: deb http://deb.debian.org/debian buster-backports main
+    filename: debian-backports
+  notify: apt_update
+  when: ansible_distribution == "Debian"
+
+- name: system setup | repositories | install package management tools (debian-based)
+  tags: packages,system,settings
+  package:
+    name:
+      - aptitude
+      - software-properties-common
+    state: latest
+  when: ansible_distribution in apt_based_distro
+
+
+#  ***** ***** Distro: Archlinux and Module: pacman ***** *****
+
+- name: system setup | repositories | add ignored packages for archlinux hosts
+  tags: packages,repositories
+  lineinfile:
+      dest: /etc/pacman.conf
+      regexp: "^#?IgnorePkg"
+      line: "IgnorePkg   = ansible linux linux-headers linux-lts linux-lts-headers"
+  when: ansible_distribution in pacman_based_distro
