@@ -8,13 +8,7 @@
 
 # import os name list
 - name: pre-run | vars related to OS category
-  include_vars:
-    dir: /home/wiu/ms/ansible/ansible/group_vars/os
-    extensions:
-      - ''
-      - 'yaml'
-      - 'yml'
-      - 'json'
+  include_vars: /home/wiu/ms/ansible/ansible/group_vars/os
 
 # run the equivalent of "apt-get update"
 #   only run "update_cache=yes" if the last one is more than 3600 seconds ago
