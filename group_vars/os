@@ -1,0 +1,26 @@
+---
+# vars file having OS list with respective category
+
+# Sample:
+  # category:
+  #   - [ latest/present/absent, package_name<=version>, <python_executablr_path> ]
+
+# How to use it in tasks:
+  # when: ansible_distribution in apt_based_distro
+  # when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu", "Kali GNU/Linux"]
+  # when: ansible_os_family == "Debian"
+
+apt_based_distro:
+  - "Debian"
+  - "Pop!_OS"
+  - "Ubuntu"
+  - "Kali GNU/Linux"
+
+yum_based_distro:
+  - "RedHat"
+  - "centos"
+  - "fedora"
+
+pacman_based_distro:
+  - "Archlinux"
+  - "Manjaro"

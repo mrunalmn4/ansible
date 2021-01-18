@@ -6,6 +6,16 @@
 ---
 #  ***** ***** Distro: Debian and Module: apt ***** *****
 
+# import os name list
+- name: pre-run | vars related to OS category
+  include_vars:
+    dir: /home/wiu/ms/ansible/ansible/group_vars/os
+    extensions:
+      - ''
+      - 'yaml'
+      - 'yml'
+      - 'json'
+
 # run the equivalent of "apt-get update"
 #   only run "update_cache=yes" if the last one is more than 3600 seconds ago
 - name: pre-run | update package cache (debian based distros)
@@ -14,8 +24,7 @@
     update_cache: yes
     cache_valid_time: 3600
   changed_when: False
-  # when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu", "Kali GNU/Linux"]
-  when: ansible_os_family == "Debian"
+  when: ansible_distribution in apt_based_distro
 
 
 #  ***** ***** Distro: RedHat and Module: yum ***** *****
@@ -25,8 +34,7 @@
   yum:
     update_cache: yes
   changed_when: False
-  # when: ansible_distribution in ["RedHat", "centos", "fedora"]
-  when: ansible_os_family == "RedHat"
+  when: ansible_distribution in yum_based_distro
 
 
 #  ***** ***** Distro: Archlinux and Module: pacman ***** *****
@@ -36,5 +44,4 @@
   pacman:
     update_cache: yes
   changed_when: False
-  # when: ansible_distribution == "Archlinux"
-  when: ansible_os_family == "Archlinux"
+  when: ansible_distribution in pacman_based_distro
