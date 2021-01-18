@@ -1,0 +1,83 @@
+---
+# vars file having package list with respective category
+
+# Sample:
+  # category:
+  #   - latest/present/absent, package_name<=version>, <python_executablr_path>
+
+##################################################
+# package_list:
+#   # - pip
+#   # - piwp
+#   pip:
+#     - [ latest, bpytop, /usr/bin/pip3 ]
+#     - [ latest, glances, /usr/bin/pip3 ]
+
+#   pip2:
+#     - [ latest, bpytop, /usr/bin/pip3 ]
+#     - [ latest, glances, /usr/bin/pip3 ]
+
+#   cleanup:
+#     - [ absent, cowsay ]
+#     - [ absent, exim4 ]
+#     - [ absent, exim4-base ]
+#     - [ absent, exim4-config ]
+#     - [ absent, nano ]
+
+################################################
+
+package_list:
+
+  cleanup:
+    - [ absent, cowsay ]
+    - [ absent, exim4 ]
+    - [ absent, exim4-base ]
+    - [ absent, exim4-config ]
+    - [ absent, nano ]
+
+  development:
+    - [ latest, fabric ]
+    - [ latest, flake8 ]
+    - [ latest, git ]
+    - [ latest, perl ]
+    - [ latest, "{{ python_flake8_package }}" ]
+    - [ latest, "{{ python_package }}" ]
+    - [ latest, "{{ python_pip_package }}" ]
+    - [ latest, "{{ python_pyflakes_package }}" ]
+    - [ latest, python-setuptools ]
+    - [ latest, "{{ python_virtualenv_package }}" ]
+    - [ latest, ruby ]
+    - [ latest, "{{ ruby_rake_package }}" ]
+    - [ latest, tig ]
+
+  utilities:
+    - [ latest, at ]
+    - [ latest, colordiff ]
+    - [ latest, curl ]
+    - [ latest, "{{ dns_utils_package}}" ]
+    - [ latest, htop ]
+    - [ latest, iotop ]
+    - [ latest, "{{ lm_sensors_package }}" ]
+    - [ latest, lsof ]
+    - [ latest, mc ]
+    - [ latest, mosh ]
+    - [ absent, ncdu ]
+    - [ latest, neofetch ]
+    - [ latest, net-tools ]
+    - [ latest, "{{ nfs_client_package }}" ]
+    - [ latest, nmap ]
+    - [ latest, ranger ]
+    - [ latest, "{{ rename_package }}" ]
+    - [ latest, rsync ]
+    - [ latest, screen ]
+    - [ latest, sshfs ]
+    - [ latest, tmux ]
+    - [ latest, traceroute ]
+    - [ latest, "{{ vim_package }}" ]
+    - [ latest, wget ]
+    - [ latest, whois ]
+    - [ latest, zsh ]
+
+  pip:
+    - [ latest, bpytop, /usr/bin/pip3 ]
+    - [ latest, glances, /usr/bin/pip3 ]

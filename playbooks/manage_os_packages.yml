@@ -1,0 +1,32 @@
+# Ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html
+#         https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+#         https://docs.ansible.com/ansible/latest/collections/community/general/pacman_module.html
+#         https://github.com/ansible/ansible/issues/42699
+#         https://docs.ansible.com/ansible/2.4/playbooks_loops.html#loop-control
+#         https://stackoverflow.com/questions/23264226/how-to-write-dynamic-variable-in-ansible-playbook
+
+
+---
+
+- name: pre-run | include vars related packages
+  include_vars:
+    dir: /home/wiu/ms/ansible/ansible/group_vars/packages
+    extensions:
+      - ''
+      - 'yaml'
+      - 'yml'
+      - 'json'
+
+
+- name: system setup | OS packages | install packages
+  tags: dev,development,packages,python
+  # package:
+  #   state: "{{ item[0] }}"
+  #   name:  "{{ item[1] }}"
+  debug:
+    msg:
+    - "state: {{ item[0] }}"
+    - "name:  {{ item[1] }}"
+  with_items:
+     - "{{ package_list[curr_pkg_categories] }}"
+  when: curr_pkg_categories != 'pip'
